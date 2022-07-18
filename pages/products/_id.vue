@@ -17,11 +17,6 @@ export default {
     );
     const product = await res.json();
     return { product };
-  },
-  computed: {
-    id() {
-      return this.$route.params.id
-    }
   }
 }
 </script>
