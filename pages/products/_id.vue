@@ -11,21 +11,16 @@
 
 <script>
 export default {
-  data() {
-    return {
-      products: [],
-    };
-  },
-  async asyncData() {
+  async asyncData({params}) {
     const res = await fetch(
-      "https://6204eefd161670001741b078.mockapi.io/api/v1/products"
+      `https://6204eefd161670001741b078.mockapi.io/api/v1/products/${params.id}`
     );
-    const products = await res.json();
-    return { products };
+    const product = await res.json();
+    return { product };
   },
   computed: {
-    product() {
-      return this.products.find(el => el.id === this.$route.params.id)
+    id() {
+      return this.$route.params.id
     }
   }
 }
